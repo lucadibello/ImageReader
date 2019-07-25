@@ -1,12 +1,19 @@
 {% include "header.html" %}
 
 {% block body %}
-    <div class="Container">
-        <h1>I've scanned your image in {{ time }} milliseconds and found {{ words }} words!</h1>
+    <div class="container">
+        <br>
+        <br>
+        <h1>Results</h1>
+        <hr>
 
-        <h1>Text</h1>
+        <h2>Information</h2>
+        <p>Words: {{ words }}</p>
+        <p>Scan time: {{ time }} seconds</p>
+        <hr>
+
+        <h2>Extracted text</h2>
         <p>{{ text }}</p>
-
     </div>
 {% endblock body %}
 

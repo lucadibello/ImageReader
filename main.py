@@ -1,6 +1,5 @@
 import datetime
 import io
-import json
 
 import pytesseract
 from PIL import Image
@@ -8,10 +7,12 @@ from flask import Flask, request, render_template, redirect, url_for, session
 
 app = Flask(__name__)
 
+# Secret key for sessions encryption
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
+
 @app.route('/')
-def hello():
+def home():
     return render_template("index.html", title="Image Reader")
 
 
@@ -27,7 +28,7 @@ def scan_file():
 
         session['data'] = {
             "text": scanned_text,
-            "time": str(datetime.datetime.now() - start_time)
+            "time": str((datetime.datetime.now() - start_time).total_seconds())
         }
 
         return redirect(url_for('result'))
@@ -37,14 +38,18 @@ def scan_file():
 def result():
     if "data" in session:
         data = session['data']
-        print("data")
-        words = len(data["text"].split(" "))
-        return render_template("result.html", title="Result", time=data["time"], text=data["text"], words=words)
+        return render_template(
+            "result.html",
+            title="Result",
+            time=data["time"],
+            text=data["text"],
+            words=len(data["text"].split(" "))
+        )
     else:
         return "Wrong request method."
 
 
 if __name__ == '__main__':
+    # Setup Tesseract executable path
     pytesseract.pytesseract.tesseract_cmd = r'D:\TesseractOCR\tesseract'
-
     app.run(debug=True)
