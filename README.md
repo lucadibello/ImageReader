@@ -5,37 +5,33 @@ It uses Flask (back-end) and as front-end framework Material Design Bootstrap (j
 # Setup
 ## Install requirements
 ### UNIX
-'''bash
+```bash
 pip3 install -r requirements.txt
-'''
+```
 
 ### Windows
-'''bash
+```bash
 pip install -r requirements.txt
-'''
+```
 
 
 ## Setup Tesseract path
 Insert Tesseract file path in main.py (line 54):
 
-"""python
-if __name__ == '__main__':
-    # Setup Tesseract executable path
-    #Example: r'D:\TesseractOCR\tesseract'
-    pytesseract.pytesseract.tesseract_cmd = r'<path_to_tesseract_exe>'
+```python
+# Example: r'D:\TesseractOCR\tesseract'
+pytesseract.pytesseract.tesseract_cmd = r'<path_to_tesseract_exe>'
+```
 
-    app.run(debug=True)
-"""
-
-# Start website
+# Start Flask webserver
 ## UNIX
-'''bash
+```'bash
 python3 main.py
-'''
+```
 
 ## Windows
-'''bash
+```bash
 python main.py
-'''
+```
 
-PS: The website will start on the port 5000
+PS: The webserver will start on the port 5000
