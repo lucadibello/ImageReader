@@ -1,0 +1,14 @@
+{% include "header.html" %}
+
+{% block body %}
+    <h1>ImageReader by Luca Di Bello</h1>
+    <p>Extract all the text from an image using ImageReader!</p>
+
+    <form method=post enctype=multipart/form-data>
+      <input type="file" name="file">
+      <input type="submit" value="Scan file">
+    </form>
+
+{% endblock body %}
+
+{% include "footer.html" %}
