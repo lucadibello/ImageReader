@@ -4,11 +4,15 @@
     <h1>ImageReader by Luca Di Bello</h1>
     <p>Extract all the text from an image using ImageReader!</p>
 
-    <form method=post enctype=multipart/form-data>
+    <form action="scanner" method=post enctype=multipart/form-data>
       <input type="file" name="file">
       <input type="submit" value="Scan file">
     </form>
 
+    {% if scanned %}
+        <hr>
+        <h1>Scanned results</h1>
+    {% endif %}
 {% endblock body %}
 
 {% include "footer.html" %}
